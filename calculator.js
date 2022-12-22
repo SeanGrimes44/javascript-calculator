@@ -28,3 +28,11 @@ function operate (op, a, b) {
         return divide(a, b);
     }
 }
+let displayValue = "";
+const buttons = document.querySelectorAll(".number");
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", () => {
+        displayValue += buttons[i].innerText;
+        document.querySelector("h1").innerHTML = displayValue;
+    });
+}
