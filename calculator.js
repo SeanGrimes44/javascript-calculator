@@ -49,6 +49,7 @@ for (let i = 0; i < opButtons.length; i++) {
     opButtons[i].addEventListener("click", () => {
         if (eval !== "") {
             secondNumber = Number(displayValue);
+            // Check for divice by zero.
             firstNumber = operate(eval, firstNumber, secondNumber);
             document.querySelector("h1").innerHTML = firstNumber.toString();
             displayValue = "";
@@ -72,11 +73,12 @@ equalButton.addEventListener("click", () => {
     }
     else {
         secondNumber = Number(displayValue);
-        displayValue = operate(eval, firstNumber, secondNumber).toString();
+        // Check for divide by zero.
+        let answer = operate(eval, firstNumber, secondNumber);
+        displayValue = answer.toString();
         document.querySelector("h1").innerHTML = displayValue;
-        firstNumber = 0;
+        firstNumber = answer;
         secondNumber = 0;
         eval = "";
-        displayValue = "";
     }
 });
