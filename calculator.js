@@ -48,7 +48,12 @@ const opButtons = document.querySelectorAll(".operator");
 for (let i = 0; i < opButtons.length; i++) {
     opButtons[i].addEventListener("click", () => {
         if (eval !== "") {
+            secondNumber = Number(displayValue);
             firstNumber = operate(eval, firstNumber, secondNumber);
+            document.querySelector("h1").innerHTML = firstNumber.toString();
+            displayValue = "";
+            secondNumber = 0;
+            eval = opButtons[i].innerText;
         }
         else {
             firstNumber = Number(displayValue);
