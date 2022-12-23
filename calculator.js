@@ -29,10 +29,49 @@ function operate (op, a, b) {
     }
 }
 let displayValue = "";
-const buttons = document.querySelectorAll(".number");
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", () => {
-        displayValue += buttons[i].innerText;
+function display (a) {
+
+}
+const numberButtons = document.querySelectorAll(".number");
+for (let i = 0; i < numberButtons.length; i++) {
+    numberButtons[i].addEventListener("click", () => {
+        displayValue += numberButtons[i].innerText;
         document.querySelector("h1").innerHTML = displayValue;
     });
 }
+
+let eval = "";
+let firstNumber = 0;
+let secondNumber = 0;
+
+const opButtons = document.querySelectorAll(".operator");
+for (let i = 0; i < opButtons.length; i++) {
+    opButtons[i].addEventListener("click", () => {
+        if (eval !== "") {
+            firstNumber = operate(eval, firstNumber, secondNumber);
+        }
+        else {
+            firstNumber = Number(displayValue);
+            displayValue = "";
+            eval = opButtons[i].innerText;
+        }
+    });
+}
+
+// equal button
+const equalButton = document.querySelector(".equals");
+equalButton.addEventListener("click", () => {
+    if (eval === "") {
+        firstNumber = Number(displayValue);
+        displayValue = "";
+    }
+    else {
+        secondNumber = Number(displayValue);
+        displayValue = operate(eval, firstNumber, secondNumber).toString();
+        document.querySelector("h1").innerHTML = displayValue;
+        firstNumber = 0;
+        secondNumber = 0;
+        eval = "";
+        displayValue = "";
+    }
+});
