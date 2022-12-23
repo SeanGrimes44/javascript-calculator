@@ -82,3 +82,13 @@ equalButton.addEventListener("click", () => {
         eval = "";
     }
 });
+
+// clear button
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener("click", () => {
+    firstNumber = 0;
+    secondNumber = 0;
+    eval = "";
+    displayValue = "";
+    document.querySelector("h1").innerHTML = "0";
+});
